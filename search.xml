@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[首页]]></title>
     <url>%2F2019%2F09%2F28%2Ffirst%2F</url>
-    <content type="text"><![CDATA[第一篇博文请多指教hello粗体&lt;html&gt;&lt;/html&gt; 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt; &lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;/body&gt;&lt;/html&gt; 链接百度 我的内容呢 这个是斜体]]></content>
+    <content type="text"><![CDATA[第一篇博文请多指教hello粗体&lt;html&gt;&lt;/html&gt; 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt; &lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;/body&gt;&lt;/html&gt; 链接百度 我的内容呢 这个是斜体 12345class A &#123; public static void main(String[] args)&#123; System.out.println("aaa"); &#125;&#125;]]></content>
       <categories>
         <category>前端</category>
         <category>技术</category>
