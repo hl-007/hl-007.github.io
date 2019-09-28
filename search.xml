@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[首页]]></title>
+    <url>%2F2019%2F09%2F28%2Ffirst%2F</url>
+    <content type="text"><![CDATA[第一篇博文请多指教hello粗体&lt;html&gt;&lt;/html&gt; 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt; &lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;/body&gt;&lt;/html&gt; 链接百度 我的内容呢 这个是斜体]]></content>
+      <categories>
+        <category>前端</category>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F09%2F27%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+</search>
