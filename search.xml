@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[next设置文章首页的显示长度]]></title>
+    <url>%2F2019%2F10%2F11%2Fhexo-01%2F</url>
+    <content type="text"><![CDATA[找到next主题配置文件，在其中搜素（快捷键ctrl+f）auto_excerpt,找到如下内容并修改 auto_excerpt: ,修改enable为true, length自己设置，一般100左右即可]]></content>
+      <categories>
+        <category>next</category>
+        <category>next 相关配置</category>
+      </categories>
+      <tags>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[next 主题添加背景图片并透明化]]></title>
+    <url>%2F2019%2F10%2F11%2Fhexo%2F</url>
+    <content type="text"><![CDATA[首先找到一个背景图片放到 hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source-&gt; images 的路径下； hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source -&gt; css -&gt; _custom，找到路径下的custom.styl文件，在文件中添加代码: 12345body &#123;background: url(/images/background.jpg) no-repeat center fixed; background-size: 100%; opacity: 0.8; &#125; 注意： 背景图片名字可以自己随便设置，在这里我设置成background.jpg，透明度0-1之间]]></content>
+      <categories>
+        <category>next</category>
+        <category>next 相关配置</category>
+      </categories>
+      <tags>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[cpu]]></title>
     <url>%2F2019%2F10%2F10%2Fcpu%2F</url>
     <content type="text"><![CDATA[cpu主要影响因素： 核心数 核心频率 架构 缓存 核心数 核心负责电脑的数据运算，多个核心同时工作可以加快cpu工作的速度，一般一个核心数配有多个线程，减少cpu的空闲时间，提高系统的资源利用率 核心频率 频率越高，cpu数据处理的速度也就越快 基本频率：cpu处理简单问题，比如看网页，聊微信时运行的频率 睿频：cpu处理稍微复杂问题，比如玩游戏，视频渲染，cpu全速运转时的频率 超频：在人为干扰下，给cpu加点电压，强行让cpu以更高的频率运行 架构 整个cpu的结构设计，采用新架构的设计更加合理，一般新一代的cpu都会搭载新一代的架构 缓存 cpu的一级缓存速度最快，二级缓存其次，三级缓存最慢 ，但最慢也比内存快的多，所以缓存越多越好 建议： 游戏玩家建议买核心频率较高的，设计类的买多核心多线程]]></content>
@@ -49,7 +73,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[首页]]></title>
+    <title><![CDATA[first]]></title>
     <url>%2F2019%2F09%2F28%2Ffirst%2F</url>
     <content type="text"><![CDATA[第一篇博文请多指教hello粗体&lt;html&gt;&lt;/html&gt; 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt; &lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;/body&gt;&lt;/html&gt; 链接百度 我的内容呢 这个是斜体 12345class A &#123; public static void main(String[] args)&#123; System.out.println("aaa"); &#125;&#125;]]></content>
   </entry>
