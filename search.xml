@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[radiator]]></title>
+    <url>%2F2019%2F10%2F14%2Fradiator%2F</url>
+    <content type="text"><![CDATA[散热器散热器的结构和工作原理 传热底座被紧紧固定在cpu上，将cpu的热量传递给导热铜管，铜管里面是空心的，铜管里面有导热液，导热液遇热蒸发，将热量传递到散热鳍片上，鳍片将热量均匀的分散开来，风扇在将热量吹走 选购散热器关注以下几点： 热管数量 底座做工 鳍片大小 风扇风量 热管 首先看导热铜管的数量，热管是影响热量传递的关键， 热管越多，直径越粗，传热的效果也会越好 家用办公的场合选2根热管或无热管的都可以 平时玩游戏选4根热管的就够用了 超频玩家可以选6根及以上的热管此外，热管也分为镀镍和非镀镍，镀镍的热管有防腐防锈的作用，因此更加耐用 传热底座传热底座的做工一定要平整，这样才能和cpu充分接触，虽然导热硅脂能够填入其中的缝隙，但是硅脂的导热效率比金属差太多，涂太多的导热硅脂也会影响导热效率目前的底座有三种，导热直触，铜底焊接和均热板 热管直触是最便宜的，精度太差，底部铜管太薄 铜底焊接，底座平整、精度高，焊接工艺耐用，多用于高端散热器 均热板，很少见，在高端笔记本上用的比较多，导热效率也会更高 鳍片鳍片的作用是将热量散发到空气中，因此主要看鳍片与空气的接触面积，在风量等同的情况下，鳍片越大越好 此外，热管和鳍片之间结合的工艺也影响散热效率，它分为回流焊和穿片两种 穿FIN工艺：鳍片包围着热管是将热管通过外力的作用来穿透鳍片，因此价格便宜，但对于做工要求很高，做工不好的话，很容易造成松动，接触不良，影响导热效率 回流焊工艺：内部热管与鳍片焊接，成本高，牢固耐用 风扇风量这个就要多对比散热器风量和噪音值，看网站的介绍说明 最后注意支持的平台和机箱限高等，它影响着你的机箱能不能装的上，大多数的散热器都是支持多平台的，具体的信息也可以在网站的详细信息中去找 总结1. 热管虽然很重要，但是传热底座必须要足够的平整2. 家用场合发热不大，选2根热管的或者无热管的都能轻松应对3. 玩游戏不超频，选4根热管的就足够了4. 超频玩家可以选择6根热管及以上的散热器，一定要是铜底焊接底座的，也要注意挡不挡内存以及机箱限高等信息5. 购买前要注意散热器的扣具是否支持的cpu平台]]></content>
+      <categories>
+        <category>Digital</category>
+        <category>radiator</category>
+      </categories>
+      <tags>
+        <tag>Digital</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[next设置文章首页的显示长度]]></title>
     <url>%2F2019%2F10%2F11%2Fhexo-01%2F</url>
     <content type="text"><![CDATA[找到next主题配置文件，在其中搜素（快捷键ctrl+f）auto_excerpt,找到如下内容并修改 auto_excerpt: ,修改enable为true, length自己设置，一般100左右即可]]></content>
@@ -75,7 +87,7 @@
   <entry>
     <title><![CDATA[first]]></title>
     <url>%2F2019%2F09%2F28%2Ffirst%2F</url>
-    <content type="text"><![CDATA[第一篇博文请多指教hello粗体&lt;html&gt;&lt;/html&gt; 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt; &lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;/body&gt;&lt;/html&gt; 链接百度 我的内容呢 这个是斜体 12345class A &#123; public static void main(String[] args)&#123; System.out.println("aaa"); &#125;&#125;]]></content>
+    <content type="text"><![CDATA[第一篇博文请多指教hello粗体&lt;html&gt;&lt;/html&gt; 12345678&lt;html&gt; &lt;head&gt; &lt;title&gt; &lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;/body&gt;&lt;/html&gt; 1234int main(void) &#123; printf("c语言"); return 0;&#125; 链接百度 我的内容呢 这个是斜体 12345class A &#123; public static void main(String[] args)&#123; System.out.println("aaa"); &#125;&#125;]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
