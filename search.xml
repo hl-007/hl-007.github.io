@@ -2,15 +2,19 @@
 <search>
   <entry>
     <title><![CDATA[rotation chart]]></title>
-    <url>%2F2019%2F10%2F24%2Frotation-chart%2F</url>
+    <url>%2F2019%2F10%2F24%2FJavaScript%2Frotation-chart%2F</url>
     <content type="text"><![CDATA[主要介绍一下轮播图的一种实现方式 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;Title&lt;/title&gt; &lt;style type="text/css"&gt; * &#123; margin: 0; padding: 0; &#125; #outer &#123; width: 500px; height: 333px; margin: 100px 10% 1000px; position: relative; overflow: hidden; &#125; #imgList &#123; list-style: none; /*width: 3200px;*/ position: absolute; left: 0px; &#125; #imgList li &#123; float: left; &#125; #navDiv &#123; position: absolute; bottom: 10px; &#125; #navDiv a &#123; width: 10px; height: 10px; float: left; background-color: #bbffaa; /*opacity: 0.8;*/ margin: 0 5px; &#125; #navDiv a:hover &#123; background-color: black; &#125; &lt;/style&gt; &lt;script type="text/javascript"&gt; onload = function () &#123; // 可以根据图片数量的多少来自动增加 ul 的宽度 var imgList = document.getElementById("imgList"); var imgAll = document.getElementsByTagName("img"); imgList.style.width = 500 * imgAll.length + "px"; // 设置导航按钮可以根据它的数量自动居中 var navDiv = document.getElementById("navDiv"); var outer = document.getElementById("outer"); navDiv.style.left = (outer.offsetWidth - navDiv.offsetWidth) / 2 + "px"; // 设置页面打开第一个导航按钮默认是黑色的 var index = 0; var allA = document.querySelectorAll("#navDiv a"); allA[index].style.backgroundColor = "black"; // 点击哪个按钮就切换到对应的图片，设置所有的 a 绑定单机响应函数 for (var i = 0; i &lt; allA.length; i++) &#123; allA[i].num = i; allA[i].onclick = function () &#123; clearInterval(timer); index = this.num; setA(); move(imgList, "left", -500 * index, 5000, function () &#123; autoChange(); &#125;); &#125; &#125; function setA() &#123; // 判断当前索引是否为最后一张 if (index &gt;= imgAll.length - 1) &#123; index = 0; imgList.style.left = 0; &#125; for (var i = 0; i &lt; allA.length; i++) &#123; allA[i].style.backgroundColor = ""; &#125; allA[index].style.backgroundColor = "black"; &#125; function move(obj, attr, target, speed, callback) &#123; clearInterval(obj.timer); var current = parseInt(getComputedStyle(obj, null)[attr]); if (current &gt; target) &#123; speed = -speed; &#125; obj.timer = setInterval(function () &#123; var oldValue = parseInt(getComputedStyle(obj, null)[attr]); var newValue = oldValue + speed; if (newValue &gt; target &amp;&amp; speed &gt; 0 || newValue &lt; target &amp;&amp; speed &lt; 0) &#123; newValue = target; &#125; obj.style[attr] = newValue + "px"; if (newValue == target) &#123; clearInterval(obj.timer); if (callback) &#123; callback(); &#125; &#125; &#125;, 30); &#125; // 自动切换图片 autoChange(); var timer; function autoChange() &#123; timer = setInterval(function () &#123; index++; index %= imgAll.length; move(imgList, "left", -500 * index, 30, function () &#123; setA(); &#125;) &#125;, 3000) &#125; &#125; &lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="outer"&gt; &lt;ul id="imgList"&gt; &lt;li&gt;&lt;a href="https://www.baidu.com" title="百度"&gt;&lt;img src="img/1.jpg" alt=""&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.baidu.com" title="百度"&gt;&lt;img src="img/2.jpg" alt=""&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.baidu.com" title="百度"&gt;&lt;img src="img/3.jpg" alt=""&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.baidu.com" title="百度"&gt;&lt;img src="img/4.jpg" alt=""&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.baidu.com" title="百度"&gt;&lt;img src="img/5.jpg" alt=""&gt;&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a href="https://www.baidu.com" title="百度"&gt;&lt;img src="img/1.jpg" alt=""&gt;&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;div id="navDiv"&gt; &lt;a href="javascript:;"&gt;&lt;/a&gt; &lt;a href="javascript:;"&gt;&lt;/a&gt; &lt;a href="javascript:;"&gt;&lt;/a&gt; &lt;a href="javascript:;"&gt;&lt;/a&gt; &lt;a href="javascript:;"&gt;&lt;/a&gt; &lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt; JavaScript设置步骤： 第一步：在设置ul的宽度时候，我们需要动态的去设置，即图片添加或减少多少，ul都能根据图片的数量来进行动态变化 第二步：在设置轮播按钮的时候，我们也需要根据按钮的数量来进行动态的居中 第三步：在设置默认第一个导航按钮为另一种形态的时候，我们也要在JavaScript进行设置 第四步：设置鼠标的单机响应事件，即按到哪个按钮就自动切换到对应的图片 在进行第四步时也是最难的一部分，需要给ul开启定位，通过它的偏移量来设置图片的位置，同时设置完图片后，导航按钮也不会自动对应的图片下方导航按钮的位置，我们需要手动设置，之后再通过定义一个函数来实现ul的偏移量的设置 第五步：设置自动实现图片轮播的效果，开启一个定时器，来调用第四步定义的函数，实现图片的自动轮播 设置完手动点击切换图片和自动切换图片后，我们还需要设置手动点击切换图片的优先级要更高，即手动点击切换图片时，关闭自动切换图片，再在第四步定义的函数的回调函数callback中调用第五步定义的自动切换图片函数来重新开启自动切换图片 注：在开启定时器后，要记得关闭定时器，不然多次点击按钮（单机响应函数绑定给了按钮）之后，图片切换会越来越快，就是因为不断开启定时器，然而却没有关闭定时器；还有就是图片切换到最后一张图片时，再通过设置ul的偏移量为0，来切换为最开始的第一张图片]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>rotation chart</category>
+      </categories>
       <tags>
         <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[monitor]]></title>
-    <url>%2F2019%2F10%2F20%2Fmonitor%2F</url>
+    <url>%2F2019%2F10%2F20%2FDigital%2Fmonitor%2F</url>
     <content type="text"><![CDATA[显示器主要影响因素： 色域 色差 分辨率和尺寸 刷新率和响应时间 色域 色域专业的说法是表示显示器能显示的色彩的范围，简单可以理解为显示器显示的色彩好不好 常见的色域有两种表示方法，sRGB色域和NTSC色域，它们两个都表示色彩范围的大小，只不过是标准不同， 72%NTSC 约等于 100%sRGB 色差 色差表示色彩显示的准确不准确 色差以DelaE作为单位 对于设计师来说，显示器的DelaE值要小于3才算合格 分辨率和尺寸 分辨率表示画面显示精细不精细，高分辨率的画面要更加的细腻 刷新率和响应时间 我们看到的显示器画面都是由一张一张的图片高速播放才形成的动画，显示器的刷新率表示的就是每秒能播放多少张图片比如说你的显卡1秒能画出120张图片（也就是我们说的120帧），可是你的显示器是60HZ的，1秒只能播放60张图片，那么它只能播放显卡的1、3、5、7、9…119等图片，整个画面就不连贯、不流畅，所以显示器的刷新率越高，播放的画面显然是更加流畅的 液晶面板 液晶面板就是显示器的屏幕，不同的面板的0色域和响应时间等都是不一样的 TN面板的优势是价格低、响应快，因此很容易就能做到144hz和1ms响应，缺点是色域窄、颜色泛白、可视角度小 IPS面板是现在的主流，它的优势是色彩好、色彩准可视角度大 ，但响应时间一般，而且黑色显示不够纯正，在晚上画面又正好是黑色时漏光会比较明显，漏光是IPS面板的通病 VA面板，现在的VA面板多为三星研发的VA面板，这类面板色彩艳丽，但响应时间慢，多为三星的曲面屏 PLS面板是三星独家研发的面板了，性能类似与IPS面板 带鱼屏 带鱼屏是屏幕比例为21：9或以上的显示器这种屏幕足够长，所以一屏能显示更多的内容，需要注意的是带鱼屏29英寸的高度和23英寸的差不多大，因此想要大一点的屏幕可以选择34英寸的，它的高度和27英寸的差不多 总结 家用影音不要买TN面板的显示器，色彩会比较差，可以买色彩较好的VA屏或IPS屏 主玩FPS射击类游戏的玩家最好不要买VA屏的显示器，可以买144hz的TN屏或IPS屏 修图和设计类用途的尽量买100%sRGB色域、色差小于3的显示器，色域过高（如130%sRGB 120%NTSC）容易导致偏色 带鱼屏很适合多窗口多任务的工作、也很适合看电影、玩单机大作]]></content>
       <categories>
         <category>Digital</category>
@@ -22,7 +26,7 @@
   </entry>
   <entry>
     <title><![CDATA[motherboard]]></title>
-    <url>%2F2019%2F10%2F17%2Fmotherboard%2F</url>
+    <url>%2F2019%2F10%2F17%2FDigital%2Fmotherboard%2F</url>
     <content type="text"><![CDATA[主板 芯片组是主板的核心芯片，只有选对芯片组，主板和CPU才能兼容 第一步：选择合适的芯片组 intel平台 intel300系列芯片组的主板，也就是H310 B360 Z370等百位上数字是3的主板都是支持intel 8代9代CPU的，而100 200系列的主板如Z172 H210 B260 Z270等是支持intel6代7代CPU的，正常情况下你选对了这个，你的CPU和主板就能兼容。 虽然CPU和主板能够兼容了，但它可能并不是最佳的搭配，只有阵容搭配合理， 才能发挥出电脑的实力 ，以现在最主流的300系列芯片组举个例子 H310, 是入门级，价格最低，在四百元左右，由于芯片组中对高新能的pcie通道数支持较少，所以不建议使用中高端显卡的玩家选H310芯片组的主板，仅建议家用办公娱乐影音用途的玩家购买 B360是主流级的，比H310要强的多，价格在六七百元左右，其实它的性能是不差的，只是被intel锁了倍频，也就是不能在给CPU超频了，内存也仅支持到2666频率，由于不能超频，所以建议搭配不能超频的CPU，如i3-8100 i5-8400 i5-8500 i5-8600 i7-8700使用 H370是中高端价格在1000元左右，比上不足比下又拉不开差距，价格又贵又不能超频，所以仅建议搭配i7-8700使用 Z370/Z390 其实差别不是很大， 390是370 小升级版，定位高端支持超频，也支持3600+的高频内存条，也就是说想玩玩超频和高频内存条的，一定要买Z370或Z390的主板，由于能够超频，所以建议能够超频的CPU. 如i3-8350K i5-8600K i7-8700K i7-9700K i7-9900K等后缀带K的CPU使用 X299, 它不属于300系列的而是200系列的，它的性能是最高的 AMD平台 由于AMD现在只有锐龙系列的CPU值得购买，所以主要说说锐龙系列的主板 锐龙平台的主板选择很简单的，基本上不用管芯片组，只要主板的接口和CPU的接口是一样的就可以用，所以不管你的锐龙1代还是2代的CPU，只要是AM4接口的都能用 虽然能用，我们依然要选择最适合自己CPU的芯片组 锐龙平台的芯片组档次从低到高分别为：A320 &lt; B350/B450 &lt; X370/X470 &lt; X399 A320是入门级，价格最低四百元左右，不支持超频，但锐龙系列的CPU又都是可以超频的，而且B350系列的主板并不比A320的贵多少，所以A320的主板不建议购买，家用办公，预算不足可以考虑 B350/B450是主流级，价格适中在五百元左右，可以超频，适合大多数用户，性价比很高，B450能支持到3466的内存频率，比B350要高一些，价格差距不大就买B450，如果预算不多B350也不差，可以搭配任何AM4接口的锐龙CPU使用 X370/X470是高端发烧级，价格较高，可以超频，而且支持双显卡交火，虽然支持各种原生的SATA和PCIE接口更多，但对于普通用户来说根本用不到，如果你有双显卡交火需求或者两个全速M.2固态硬盘的需求，就可以买 X370/X470的主板，不然的话买B350/B450更有性价比 X399主板是TR4接口的，对应的CPU是1950X 2950X 2990WX等线程撕裂者系列的CPU 第二步：尺寸/接口/做工 首先最重要的就是内存槽的数量和PCIE扩展槽的数量了 一般的主板都是4根内存插槽，也有些主板是两根内存插槽，当然也有些顶级的主板，如X299芯片组的主板会有8根插槽，一般情况下，建议买4根内存插槽的主板 未来内存容量不够了，可以方便扩展 万一有根插槽进灰了或是不好使了，4根内存插槽还有补救的空间 注：并不是说有4根内存插槽的主板就是支持4通道内存的，常见的主板包括Z370等都是双通道的 PCI-E的扩展插槽就是给主板扩展用的，比如说装显卡、声卡、网卡、固态硬盘或者数据采集卡等 注：如果喜欢那种流光溢彩的RGB灯光效果的玩家，在购买主板的时候一定要问清楚，主板上有没有5V 3根针脚的可编程GRB针脚，只有这种才能实现RGB灯光效果； 而有的主板是12V 4针脚的，只能实现比较普通的单色RGB循环效果 主板的尺寸：E-ATX主板是加强型主板，一般都是那种芯片组更加高级的X299或X399平台使用，一块主板便宜的都要三四千块钱，更加主流的就是ATX主板和M-ATX主板，ATX俗称大板，M-ATX俗称小板，芯片组一样的话是没有性能差距的，只不过大板要长一些，会有更多的PCIE扩展插槽，也就是说你没有太多扩展需求的话，想要省钱买个小板也是可以的 MINI-ITX主板一般用在ITX小机箱上，接口都是刚刚够用的水平 总结 买主板最重要的就是选对芯片组，一定要根据CPU来搭配芯片组 大板小板性能几乎没有差异，有扩展需求的买大板，没有扩展需求的可以选更便宜的小板 不管是大板还是小板，优先选择有4根内存插槽的主版 喜爱RGB的玩家，建议选带有5V3针脚的可编程RGB主板 建议 AMD主板优先选微星 intel主板优先选华硕、华擎 要求低、想省钱看看七彩虹和映泰]]></content>
       <categories>
         <category>Digital</category>
@@ -34,7 +38,7 @@
   </entry>
   <entry>
     <title><![CDATA[graphics card]]></title>
-    <url>%2F2019%2F10%2F15%2Fgraphics-card%2F</url>
+    <url>%2F2019%2F10%2F15%2FDigital%2Fgraphics-card%2F</url>
     <content type="text"><![CDATA[显卡高级的显卡每秒能够画出几百张高画质的图片，低级的显卡每秒只能够画出几十张低画质的图片 显卡的关键参数 流处理器的数量 显卡的架构 显卡的频率 显存容量/位宽/频率 流处理器流处理器就是显卡画画的东西，可以理解为显卡里的画师，画师越多每秒画出的图片也就越多 当然比流处理器的数量也是片面的，也要看看流处理器的性能怎么样，这就要看显卡的架构了 显卡的架构gtx960 采用老一代的麦克斯架构，有1024个流处理器，而 gtx1050ti采用较新一代的帕斯卡架构，768个流处理器，但是还是没有 gtx1050ti性能更好，所以说新架构的显卡效率更高，性能也更强注：流处理器和架构是最影响显卡性能的参数 显卡频率显卡的频率，可以理解为画师画画的速度，每秒画1500笔和每秒画2000笔显然是有差距的，所以在流处理器和架构一样的情况下，频率越高，显卡的性能也就越好 显存容量/位宽/频率画师画完画后，需要后勤部队把画师画好的画运出来放好，以供cpu调用，只有这些后勤部队跟得上，才能发挥出显卡应有的实力 显存位宽：表示货车每次能运多少数据 显存频率：表示小车每秒能运输多少趟 显存容量：表示存储仓库的大小了 注：显存容量是很重要，但其它的数据也不能忽视 公版显卡和非公版显卡 公版显卡：公版显卡就是显卡研发厂家NVDIA（英伟达）或 AMD 官方售卖的显卡，以稳定著称 非公版显卡：非公版显卡就是各大品牌厂家，比如华硕、微星、技嘉、索泰、intel等，买了英伟达或AMD的显卡芯片后, 自己组装拼凑生产的显卡 我们常见的显卡都是非公版的显卡，这些显卡受品牌、系列、价格等影响，性能和质量也参差不齐。优秀的非显卡散热更强、性能也比公版更好 N卡和A卡 N卡: N卡是NVDIA（英伟达）芯片的显卡，比如 GTX450 GTX1080TI GTX2080TI等 A卡: A卡是AMD芯片的显卡，比如 RX580 RX VEGA 56等A卡的RX580的性价比要略微强于N卡的GTX1060 6G，但N卡销量大、很多游戏对N卡的优化也比较好，所以哪个降价买哪个]]></content>
       <categories>
         <category>Digital</category>
@@ -46,7 +50,7 @@
   </entry>
   <entry>
     <title><![CDATA[radiator]]></title>
-    <url>%2F2019%2F10%2F14%2Fradiator%2F</url>
+    <url>%2F2019%2F10%2F14%2FDigital%2Fradiator%2F</url>
     <content type="text"><![CDATA[散热器散热器的结构和工作原理 传热底座被紧紧固定在cpu上，将cpu的热量传递给导热铜管，铜管里面是空心的，铜管里面有导热液，导热液遇热蒸发，将热量传递到散热鳍片上，鳍片将热量均匀的分散开来，风扇在将热量吹走 选购散热器关注以下几点： 热管数量 底座做工 鳍片大小 风扇风量 热管 首先看导热铜管的数量，热管是影响热量传递的关键， 热管越多，直径越粗，传热的效果也会越好 家用办公的场合选2根热管或无热管的都可以 平时玩游戏选4根热管的就够用了 超频玩家可以选6根及以上的热管此外，热管也分为镀镍和非镀镍，镀镍的热管有防腐防锈的作用，因此更加耐用 传热底座传热底座的做工一定要平整，这样才能和cpu充分接触，虽然导热硅脂能够填入其中的缝隙，但是硅脂的导热效率比金属差太多，涂太多的导热硅脂也会影响导热效率目前的底座有三种，导热直触，铜底焊接和均热板 热管直触是最便宜的，精度太差，底部铜管太薄 铜底焊接，底座平整、精度高，焊接工艺耐用，多用于高端散热器 均热板，很少见，在高端笔记本上用的比较多，导热效率也会更高 鳍片鳍片的作用是将热量散发到空气中，因此主要看鳍片与空气的接触面积，在风量等同的情况下，鳍片越大越好 此外，热管和鳍片之间结合的工艺也影响散热效率，它分为回流焊和穿片两种 穿FIN工艺：鳍片包围着热管是将热管通过外力的作用来穿透鳍片，因此价格便宜，但对于做工要求很高，做工不好的话，很容易造成松动，接触不良，影响导热效率 回流焊工艺：内部热管与鳍片焊接，成本高，牢固耐用 风扇风量这个就要多对比散热器风量和噪音值，看网站的介绍说明 最后注意支持的平台和机箱限高等，它影响着你的机箱能不能装的上，大多数的散热器都是支持多平台的，具体的信息也可以在网站的详细信息中去找 总结1. 热管虽然很重要，但是传热底座必须要足够的平整2. 家用场合发热不大，选2根热管的或者无热管的都能轻松应对3. 玩游戏不超频，选4根热管的就足够了4. 超频玩家可以选择6根热管及以上的散热器，一定要是铜底焊接底座的，也要注意挡不挡内存以及机箱限高等信息5. 购买前要注意散热器的扣具是否支持的cpu平台]]></content>
       <categories>
         <category>Digital</category>
@@ -58,7 +62,7 @@
   </entry>
   <entry>
     <title><![CDATA[next设置文章首页的显示长度]]></title>
-    <url>%2F2019%2F10%2F11%2Fhexo-01%2F</url>
+    <url>%2F2019%2F10%2F11%2Fnext%2Fhexo-01%2F</url>
     <content type="text"><![CDATA[找到next主题配置文件，在其中搜素（快捷键ctrl+f）auto_excerpt,找到如下内容并修改 auto_excerpt: ,修改enable为true, length自己设置，一般100左右即可]]></content>
       <categories>
         <category>next</category>
@@ -70,7 +74,7 @@
   </entry>
   <entry>
     <title><![CDATA[next 主题添加背景图片并透明化]]></title>
-    <url>%2F2019%2F10%2F11%2Fhexo%2F</url>
+    <url>%2F2019%2F10%2F11%2Fnext%2Fhexo%2F</url>
     <content type="text"><![CDATA[首先找到一个背景图片放到 hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source-&gt; images 的路径下； hexo（hexo工程文件）-&gt; themes -&gt; next -&gt; source -&gt; css -&gt; _custom，找到路径下的custom.styl文件，在文件中添加代码: 12345body &#123;background: url(/images/background.jpg) no-repeat center fixed; background-size: 100%; opacity: 0.8; &#125; 注意： 背景图片名字可以自己随便设置，在这里我设置成background.jpg，透明度0-1之间]]></content>
       <categories>
         <category>next</category>
@@ -82,7 +86,7 @@
   </entry>
   <entry>
     <title><![CDATA[cpu]]></title>
-    <url>%2F2019%2F10%2F10%2Fcpu%2F</url>
+    <url>%2F2019%2F10%2F10%2FDigital%2Fcpu%2F</url>
     <content type="text"><![CDATA[cpu主要影响因素： 核心数 核心频率 架构 缓存 核心数 核心负责电脑的数据运算，多个核心同时工作可以加快cpu工作的速度，一般一个核心数配有多个线程，减少cpu的空闲时间，提高系统的资源利用率 核心频率 频率越高，cpu数据处理的速度也就越快 基本频率：cpu处理简单问题，比如看网页，聊微信时运行的频率 睿频：cpu处理稍微复杂问题，比如玩游戏，视频渲染，cpu全速运转时的频率 超频：在人为干扰下，给cpu加点电压，强行让cpu以更高的频率运行 架构 整个cpu的结构设计，采用新架构的设计更加合理，一般新一代的cpu都会搭载新一代的架构 缓存 cpu的一级缓存速度最快，二级缓存其次，三级缓存最慢 ，但最慢也比内存快的多，所以缓存越多越好 建议： 游戏玩家建议买核心频率较高的，设计类的买多核心多线程]]></content>
       <categories>
         <category>Digital</category>
@@ -94,7 +98,7 @@
   </entry>
   <entry>
     <title><![CDATA[ssd]]></title>
-    <url>%2F2019%2F10%2F09%2Fssd%2F</url>
+    <url>%2F2019%2F10%2F09%2FDigital%2Fssd%2F</url>
     <content type="text"><![CDATA[固态硬盘（SSD） 存储颗粒 主控 缓存 速度 容量 存储颗粒： 颗粒是固态硬盘存储数据的东西 类型：SLC颗粒、MLC颗粒、TLC颗粒 SLC类型的存储颗粒的每个存储单元只存1bit数据 MLC类型的存储颗粒每个存储单元存2bit数据 TLC类型的存储颗粒每个存储单元存3bit数据 由于TLC颗粒访问速度较慢（需要辨别数据），同时负担较重，寿命较SLC和MLC要短一些，但是正常使用个4，5年是没有问题的，同时价格便宜一些。所以，现在市面上大多数的SSD都是TLC颗粒的 主控： 主控负责固态硬盘里所有数据的管理 垃圾的主控会比存储颗粒早些挂掉，这就要求主控必须要有过硬的身体素质（硬件要好），好要有先进的管理方法（固件要好，也就是系统） 缓存 DDR缓存 SLC缓存 DDR缓存：它的速度快得跟内存条差不多，作用是当硬盘某个时间写入量太大，比较繁忙的时候可以作为临时的存储介质 SLC缓存：TLC颗粒的硬盘理论上要比SLC和MLC颗粒的硬盘要慢，但实际跑分的时候，速度并不比SLC和MLC慢， 是因为大部分TLC颗粒的固态硬盘，内部有一部分容量是模拟SLC颗粒进行工作的，这部分容量叫做SLC缓存，但这部分缓存用完之后，TLC速度慢的缺点就完全暴露出来了，这也就是TLC颗粒的固态硬盘在传输大文件时，会出现明显的掉速现象 SSD的分类常见的固态硬盘有三种 SATA接口SSD M.2接口SSD PCI-E接口SSD 固态硬盘的总线和协议 SSD给内存条和CPU输送数据所走的“路”，就是总线，这条路分两种SATA总线和PCI-E总线 走PCI-E总线要比SATA总线快的多，走PCI-E总线的固态硬盘用的都是X2和X4的 NVME协议 三种硬盘的区别 SATA接口SSD M.2接口SSD有两种，一种是高性能的M型接口，但要你主板要有socket 3接口，一些较新的主板应该都有这种接口，另一种是B&amp;M型接口，虽然性能不是很强，不过它两种M.2类型的插槽都能用，用来升级老机型比较合适 PCI-E接口SSD由于大多数主板都没有PCI-Ex4接口，所以通常都是插在显卡用的PCI-Ex16插槽中使用 4k 随机读写速度（4k IPOS值） 顺序读写速度影响你读写一整个超大文件的速度，比如拷贝一部高清电影，4k IPOS影响我们开机快不快，打开软件快不快，游戏加载快不快。 容量 同一型号的固态硬盘，容量越大，寿命就越久，速度也越快 总结： 固态硬盘尽量买能自己生产颗粒的品牌，至少颗粒来源有保证 TLC颗粒价格便宜，用几年就换新，不需要对TLC有太大的抵触情绪 固态硬盘容量重要，越大性能越好，寿命也越久，至少256G sata接口的固态硬盘不需要考虑电脑支不支持，因为所有电脑都支持（包括笔记本），而m.2接口的固态硬盘安装更方便，性能也更好，购买前先看好电脑有没有m.2的接口 4K IPOS参数很能反应固态硬盘的性能，购买前可以参考]]></content>
       <categories>
         <category>Digital</category>
@@ -106,7 +110,7 @@
   </entry>
   <entry>
     <title><![CDATA[power]]></title>
-    <url>%2F2019%2F10%2F09%2Fpower%2F</url>
+    <url>%2F2019%2F10%2F09%2FDigital%2Fpower%2F</url>
     <content type="text"><![CDATA[电源选购电源第一步：先弄明白自己需要多大功率的电源，电脑中耗电最大的就是显卡和cpu了，因此我们只需要把显卡和cpu的功耗加起来，再加上100w左右的余量给风扇，主板，硬盘等就足够了显卡满载功耗表 CPU TDP功耗表 大部分中等配置的电脑，买300w-450w足矣了，一些顶级的配置，需要500w以上的电源，极限双显卡的超频玩家，可能就需要650w以上的电源 第二步：分辨电源好坏 市面上几十块钱买的500w以上的电源就不要看了，因为它们的数据大部分都是虚标的 商家表明是600w，但由于显卡和cpu的供电主要是正12v,因此我们只需要看正12v供电，如果你的显卡和cpu的功耗加起来超过300w,就会出现供电不足的情况，况且它也连接到电源，可能存在偷工减料的情况，使用起来并不安全；而好的电源是这样 购买电源前我们可以从以下几个方面对电源做一个初步的判断1. 80PLUS认证 它是对于电源的转化效率的认证，而转化效率仅代表电源省不省电，但有白金牌或金牌认证的电源，通常都不会太差 比如说电源500w的金牌电源，电源满载的情况下，你家电表的读数大约是574.7w2. 电源的方案 电源的方案就是电源的内部电路是怎么设计的 现在的主流电源方案是： 主动式PFC+LLC半桥+DC-DC 3. 电源的电容 它影响着电源是否耐用，日系和台系的电容较好 4. 质保时间 一般的电源都有1-3年的质保，优质的电源有5年质保，而旗舰级别的电源有7-10年的质保 第三步：电源的模组和尺寸 电源分为非模组、半模组、全模组，区别在于线材是否可以拆掉 非模组：非模组价格便宜，线材是固定的，装完电脑后会多出用不到的线材，不美观，整理起来麻烦 半模组：半模组电源稍贵，必须用到的线材都是固定的，但多出来的线头可以拆掉 全模组：全模组电源最贵，所有的线材都可以拆掉，线材也比较美观，整理起来也很方便 选择电源的尺寸 电源根据尺寸又可以分为SFX和ATX电源，但ATX电源使用比较多，正常情况下，买ATX电源就行了，而SFX电源主要用在小机箱上 总结1. 日常使用不要买便宜的山寨电源2. 高配电脑可以遵循一元一瓦的标准选购电源]]></content>
       <categories>
         <category>Digital</category>
@@ -118,7 +122,7 @@
   </entry>
   <entry>
     <title><![CDATA[memory]]></title>
-    <url>%2F2019%2F10%2F08%2Fmemory%2F</url>
+    <url>%2F2019%2F10%2F08%2FDigital%2Fmemory%2F</url>
     <content type="text"><![CDATA[内存概述： 当今主流的DDR4内存条2400Mhz频率的读写速度在19GB/S左右 而现在最主流的固态硬盘的读写速度最快也不过3GB/S左右 作用： 内存条可以说是CPU与硬盘之间的一个中转站，当你打开应用软件时，硬盘会先把需要用到的数据送到内存条，当数据被送到CPU之后，CPU就开始和速度更快的内存条进行数据交换了 主要影响因素： 容量 速度 容量： 家用、办公玩LOL等8GB足矣，大型单机，PS、视频制作,16GB也足矣 速度： 内存条的速度是由频率决定的，内存条本身是没有频率的，我们所说的频率是指CPU对内存条的访问频率，CPU每访问一次就会带来和带去一些数据，每秒访问的次数越多，单位时间里产生的数据量也就越多，也可以说成内存条的读写速度更快，但存储颗粒每秒能够承受的访问次数也是有上限的，超过了承受上限就会出现开不了机的情况，而存储颗粒是由内存条的颗粒体质决定的 颗粒体质：体质普通的内存颗粒每秒能承受2400Mhz频率的访问，只能做成普通的内存条，体质好的内存颗粒，每秒能承受更高的频率访问，他们被挑选出来，做成高频内存条 两根普通的双通道内存条是优于单通道的高频率内存条 时序越低越好，时序是CPU到内存条内交换数据的时间 总结： 内存条的容量最重要，要优先满足容量的需求 双通道内存有接近两倍内存性能的提升，玩游戏的话建议买两根内存条组成双通道 如果不打算给内存超频的话，可以在各大内存牌子之间挑便宜好看的内存条购买，因为大家的性能差距微乎其微，且都支持终身质保！但是一定要选择正规的渠道购买]]></content>
       <categories>
         <category>Digital</category>
